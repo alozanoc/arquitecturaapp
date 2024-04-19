@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pe.edu.upao.alozanoc.arquitecturaapp.model.User;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Repository

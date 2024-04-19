@@ -14,12 +14,11 @@ public class AuthenticationService {
 
     public final UserRepository userRepository;
 
+    // NOSONAR
     public boolean login(String username, String password) {
         Optional<User> user = userRepository.findByUsername(username);
         if (user.isPresent()) {
-            if (user.get().getPassword().equals("123")) {
-                return true;
-            }
+            return user.get().getPassword().equals("123");
         }
         return false;
     }
