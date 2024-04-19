@@ -2,10 +2,13 @@ package pe.edu.upao.alozanoc.arquitecturaapp.controller;
 
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import pe.edu.upao.alozanoc.arquitecturaapp.model.User;
 import pe.edu.upao.alozanoc.arquitecturaapp.respositories.UserRepository;
 import pe.edu.upao.alozanoc.arquitecturaapp.serializers.LoginRequest;
@@ -24,7 +27,7 @@ public class LoginController {
         if(authenticationService.login(request.getUsername(), request.getPassword())) {
             return new LoginResponse("Token");
         } else {
-            throw new IllegalArgumentException("Usuario o contraseña incorrecto");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
     }
 }
